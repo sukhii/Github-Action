@@ -1,7 +1,7 @@
 name: deployment exercise 1
 on: [push,workflow_dispatch]
 jobs:
-  deploy:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: get code
@@ -10,3 +10,23 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get code
+        uses: actions/checkout@v3
+      - name: install dependencies
+        run: npm ci
+      - name: test
+        run: npm run test
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get code
+        uses: actions/checkout@v3
+      - name: install dependencies
+        run: npm ci
+      - name: build
+        run: npm run build
+      - name: deploy code
+        run: echo "code Deployed"
