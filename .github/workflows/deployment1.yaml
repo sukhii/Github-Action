@@ -1,8 +1,8 @@
 name: deployment exercise 1
 on: [push,workflows_dispatch]
 jobs:
-	deploy:
-		runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-latest
 		steps:
 			- name: get code
 				uses: actions/checkout@v3
